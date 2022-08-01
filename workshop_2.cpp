@@ -1,18 +1,46 @@
-
 #include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-int count (int array[], int n);
+void print_binary_str(std::string decimal_number);
 
-int count (int array[], int n){
+int main() {
 
-    int even = 0;
+    string dec = "294";
 
-    for (int i = 0; i < n; i++){
-        if (array[i] % 2 == 0){
-            even += 1;
-        }
+    print_binary_str(dec);
+
+
+    return 0;
+}
+
+void print_binary_str(std::string decimal_number) {
+
+    int INTdecimal_number = stoi(decimal_number);
+
+    vector<int> a;
+
+    int temp;
+    
+    for (int i = 0; INTdecimal_number != 0; i++) {
+
+        temp = INTdecimal_number % 2;
+        a.push_back(temp);
+
+        INTdecimal_number /= 2;
+
     }
 
-    return even;
+    reverse(a.begin(), a.end()); // reverses vector so LSB is at the end and MSB at the front
+
+    for (int k = 0; k < a.size(); k++) {
+        cout << a[k];
+    }
+
+    cout << "\n";
+
+
 }
